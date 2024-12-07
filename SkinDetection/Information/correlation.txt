@@ -1,0 +1,37 @@
+There is some evidence suggesting a correlation between eczema (or atopic dermatitis) and specific blood markers that reflect immune function, allergic responses, and inflammation. However, these blood markers are not diagnostic for eczema on their own, and their presence or levels can vary widely between individuals. That said, certain blood tests can provide insight into the immune profile of someone with eczema and may contribute to a more accurate prediction model or help validate true positives, false positives, false negatives, and true negatives when integrated with image analysis.
+
+Here are some blood markers that could potentially correlate with eczema severity and help improve model accuracy:
+
+1. Total IgE (Immunoglobulin E) Levels
+Correlation: People with eczema often have elevated IgE levels due to an overactive immune response to environmental allergens. High IgE levels are associated with allergic reactions, which are commonly linked to eczema flares.
+Use in Model: IgE levels could be factored into the model to improve predictions for individuals with allergic-type eczema, potentially reducing false positives and negatives.
+2. Eosinophil Count
+Correlation: Eosinophils are a type of white blood cell involved in allergic responses and are often elevated in people with atopic conditions, including eczema.
+Use in Model: Higher eosinophil counts could indicate a greater likelihood of eczema, particularly in cases where allergic reactions are a trigger. Including this data may help distinguish eczema cases from non-eczema cases more accurately.
+3. C-Reactive Protein (CRP)
+Correlation: CRP is a marker of systemic inflammation. Though eczema is primarily a local inflammatory response, severe or widespread cases may slightly elevate CRP levels.
+Use in Model: Elevated CRP levels could support model predictions in severe cases, though it might not be as specific as IgE or eosinophil count.
+4. Interleukins and Cytokines (e.g., IL-4, IL-13, IL-31)
+Correlation: These immune signaling molecules are often elevated in inflammatory and allergic diseases. In eczema, cytokines like IL-4 and IL-13 are particularly involved in the allergic response pathway, while IL-31 is associated with itchiness.
+Use in Model: Integrating cytokine levels could be valuable if available, as certain cytokines are highly relevant to the pathophysiology of eczema, which might improve prediction accuracy.
+5. Filaggrin Gene Mutation Testing
+Correlation: Although not a blood test, testing for mutations in the filaggrin gene (FLG) is relevant. Filaggrin is a protein critical for skin barrier function, and mutations in this gene are strongly associated with eczema.
+Use in Model: Genetic predisposition could enhance model accuracy, particularly for chronic or severe cases. However, this may not be as readily available as standard blood tests.
+Implementing These Markers for Model Evaluation
+To use these blood markers in your model, you could follow these steps:
+
+Data Collection and Preprocessing: Collect and preprocess blood marker data along with the image dataset. Normalize the blood marker values as input features alongside image embeddings or image-based features.
+
+Multi-Input Model Architecture:
+
+Use a Convolutional Neural Network (CNN) for the image data.
+Use a fully connected layer for the blood marker values.
+Merge the outputs of these layers to create a hybrid model that considers both image features and blood markers for prediction.
+Evaluation Metrics:
+
+Use the blood marker data to validate model predictions.
+For each test sample, consider:
+True Positives (TP): Both the image and blood markers indicate eczema.
+False Positives (FP): The model predicts eczema based on the image, but the blood markers do not support it.
+False Negatives (FN): The model fails to predict eczema based on the image, even though blood markers indicate a high likelihood.
+True Negatives (TN): Neither image nor blood markers indicate eczema.
